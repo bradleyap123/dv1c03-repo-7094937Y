@@ -13,6 +13,40 @@ pipeline {
 				sh 'echo "STG2-7094937Y: CCWA App Server is setup and running"'
 			}
 		}
+		stage('STG3-7094937Y') {
+			parallel {
+				stage('CCWA-Scope1-7094937Y') {
+					steps {
+						sh 'echo "Scope1 Validation Status Generated"'
+					}
+				}
+				stage('CCWA-Scope2-7094937Y') {
+					steps {
+						sh 'echo "Scope2 Validation Status Generated"'
+					}
+				}
+				stage('CCWA-Scope3-7094937Y') {
+					steps {
+						sh 'echo "Scope3 Validation Status Generated"'
+					}
+				}
+			}
+		}
+		stage('STG4-7094937Y') {
+			input {
+				message 'After validation, proceed or abort the pipeline?'
+				ok 'Proceed'
+			}
+			steps {
+				sh 'echo "STG4-7094937Y: Approve to continue the pipeline."'
+			}
+		}
+		stage('STG5-7094937Y') {
+			steps {
+				sh 'echo "STG5-7094937Y: Getting ready for next phase"'
+			}
+		}
 	}
 }	
+	
 
