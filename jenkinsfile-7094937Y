@@ -1,0 +1,10 @@
+pipeline {
+	agent any
+	stages {
+		stage('STG1-7094937Y') {
+			steps {
+				sh 'echo "STG1-7094937Y: Release environment For CCWA is ready."'
+			}
+		}
+	}
+}
