@@ -6,5 +6,13 @@ pipeline {
 				sh 'echo "STG1-7094937Y: Release environment For CCWA is ready."'
 			}
 		}
+		stage('STG2-7094937Y') {
+			steps {
+				sh 'docker rm -f CCWA-7094937Y-appsvr || true'
+				sh 'docker run -d --name CCWA-7094937Y-appsvr -p 33100:80 ccwa-7094937y-temp-svr-image apache2ctl -D FOREGROUND'
+				sh 'echo "STG2-7094937Y: CCWA App Server is setup and running"'
+			}
+		}
 	}
-}
+}	
+
